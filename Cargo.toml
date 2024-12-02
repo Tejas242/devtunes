@@ -1,0 +1,10 @@
+[package]
+name = "devtunes"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rodio = "0.17"
+ratatui = { version = "0.24", features = ["all-widgets"] }
+crossterm = "0.27"
+tokio = { version = "1.0", features = ["full"] }
