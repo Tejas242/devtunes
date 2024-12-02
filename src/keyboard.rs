@@ -71,4 +71,18 @@ impl Keyboard {
         });
         self.active_keys.retain(|&k| self.keys[&k].is_pressed);
     }
+
+    pub fn release_keys(&mut self) {
+        for key in &mut self.keys.values_mut() {
+            if key.is_pressed {
+                if let Some(press_time) = key.press_time {
+                    if press_time.elapsed() > Duration::from_millis(150) {
+                        key.is_pressed = false;
+                        key.press_time = None;
+                    }
+                }
+            }
+        }
+        self.active_keys.retain(|&k| self.keys[&k].is_pressed);
+    }
 }
